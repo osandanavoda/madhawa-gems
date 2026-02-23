@@ -757,16 +757,147 @@
   .hero-content { animation: fadeInUp 0.8s ease both; }
   .hero-image { animation: fadeInUp 0.8s ease 0.2s both; }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-image { min-height: 300px; }
-    .jewelry-grid { grid-template-columns: repeat(2, 1fr); }
-    .cat-grid { grid-template-columns: repeat(2, 1fr); }
-    .review-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .gem-bar-tabs .gem-tab { padding: 0 14px; font-size: 12px; }
+  /* ─── HAMBURGER MENU ─── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--cream);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 16px 24px;
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: background 0.2s;
+  }
+  .mobile-menu a:hover { background: var(--cream2); color: var(--gold); }
+
+  /* ─── TABLET ─── */
+  @media (max-width: 1024px) {
+    .gem-bar { padding: 0 20px; }
+    header { padding: 0 20px; }
+    nav { padding: 0 20px; }
+    .section { padding: 60px 20px; }
+    .sapphires-section { padding: 60px 20px; }
+    .categories-section { padding: 60px 20px; }
+    .reviews-section { padding: 60px 20px; }
+    .process-section { padding: 60px 20px; }
+    footer { padding: 50px 20px 24px; }
+    .hero-content { padding: 60px 40px; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    .gem-bar { padding: 0 12px; height: 42px; }
+    .gem-bar-contact { display: none; }
+    .gem-tab { padding: 0 10px; font-size: 11px; gap: 4px; }
+    .gem-tab-icon { font-size: 13px; }
+
+    header { padding: 0 16px; height: 64px; position: relative; }
+    .logo-text { font-size: 14px; }
+    .logo-sub { font-size: 9px; }
+    .logo-crest { width: 40px; height: 40px; font-size: 17px; }
+    .header-icons { gap: 10px; }
+    .icon-btn { font-size: 17px; padding: 4px; }
+    .icon-btn:nth-child(3) { display: none; }
+
+    nav { padding: 0 16px; position: relative; justify-content: space-between; }
+    .nav-link { display: none; }
+    .design-own { border-right: none; font-size: 11px; padding: 12px 0; }
+    .hamburger { display: flex; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-content { padding: 40px 20px 30px; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 14px; }
+    .hero-image { min-height: 220px; }
+    .hero-img { font-size: 42px; }
+    .hero-img:nth-child(3) { font-size: 54px; }
+    .btn-primary { padding: 12px 22px; font-size: 11px; }
+
+    .section { padding: 50px 16px; }
+    .section-title { font-size: 32px; }
+    .jewelry-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+    .jewelry-card { aspect-ratio: 1/1; }
+    .jewelry-card-img { font-size: 52px; }
+    .jewelry-card-overlay { transform: translateY(0); background: rgba(255,255,255,0.85); padding: 12px; }
+    .jewelry-card-name { font-size: 11px; }
+    .jewelry-card-cta { font-size: 10px; }
+
+    .sapphires-section { padding: 50px 16px; }
+    .gem-carousel { gap: 16px; }
+    .gem-item { flex: 0 0 100px; }
+    .gem-circle { width: 82px; height: 82px; font-size: 40px; }
+    .gem-name { font-size: 11px; }
+    .carousel-prev { left: -10px; }
+    .carousel-next { right: -10px; }
+    .shop-all-btn { padding: 12px 30px; font-size: 11px; }
+
+    .categories-section { padding: 50px 16px; }
+    .cat-grid { grid-template-columns: 1fr; gap: 16px; }
+    .cat-banner { height: 140px; font-size: 56px; }
+
+    .reviews-section { padding: 50px 16px; }
+    .review-grid { grid-template-columns: 1fr; gap: 16px; }
+    .stars { font-size: 22px; letter-spacing: 2px; }
+    .filter-tags { gap: 8px; }
+    .filter-tag { padding: 6px 14px; font-size: 12px; }
+
+    .process-section { padding: 50px 16px; }
+    .process-steps { grid-template-columns: 1fr; gap: 16px; }
+    .step { padding: 24px 16px; }
+    .step-num { font-size: 44px; }
+
+    footer { padding: 40px 16px 20px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+
+    .float-chat { bottom: 20px; right: 16px; width: 46px; height: 46px; font-size: 19px; }
+  }
+
+  /* ─── SMALL PHONES ─── */
+  @media (max-width: 380px) {
+    .gem-tab { padding: 0 7px; font-size: 10px; }
+    .gem-tab-icon { display: none; }
+    .hero h1 { font-size: 28px; }
+    .section-title { font-size: 26px; }
+    .gem-circle { width: 70px; height: 70px; font-size: 32px; }
+    .gem-item { flex: 0 0 84px; }
   }
 </style>
 </head>
@@ -813,7 +944,7 @@
 </header>
 
 <!-- MAIN NAV -->
-<nav>
+<nav id="mainNav">
   <a class="design-own" href="#">✦ DESIGN YOUR OWN</a>
   <a class="nav-link" href="#">Rings</a>
   <a class="nav-link" href="#">Wedding Bands</a>
@@ -823,7 +954,35 @@
   <a class="nav-link" href="#">Settings</a>
   <a class="nav-link" href="#">FAQ</a>
   <a class="nav-link" href="#">Education</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">✦ Design Your Own</a>
+    <a href="#">Rings</a>
+    <a href="#">Wedding Bands</a>
+    <a href="#">Jewelry</a>
+    <a href="#sapphires">Sapphires</a>
+    <a href="#">Sapphire Pairs</a>
+    <a href="#">Settings</a>
+    <a href="#">FAQ</a>
+    <a href="#">Education</a>
+    <a href="tel:+18005550000">📞 +1-800-GEM-ROYAL</a>
+  </div>
 </nav>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('hamburger').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+  });
+</script>
 
 <!-- HERO -->
 <section class="hero">
